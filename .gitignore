@@ -203,6 +203,7 @@ TSWLatexianTemp*
 # WinEdt
 *.bak
 *.sav
+*.vscodeLog
 
 # Texpad
 .texpadtmp
