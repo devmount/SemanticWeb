@@ -35,6 +35,7 @@
     - difficult to cover every single entity that might be of interest
     - no relations between terms are available
     - only internal identifiers, no linking to non-BBC data
-
 - need for a common set of web identifiers: DBpedia!
 - DBpedia becomes vocabulary to connect all BBC domains
+    - DBpedia Label Lookup: Find most likely matches to a given term, calculate relevance with number of backlinks
+    - Context-based Disambiguation: 
