@@ -6,7 +6,8 @@
 - BBC:
 - Linked Data:
 - DBpedia:
-- MusicBrainz
+- MusicBrainz:
+- NER: Named Entity Recognition
 
 ## Problem
 
@@ -24,9 +25,9 @@
 1. Develop a service to link all radio and TV programmes with all other data sources in the Linked Data cloud
 2. Develop a new music offering
 3. Retrofit simple navigational elements (i.e. topic badges)
-4. Provide a common set of web sale identifiers to help create equivalency between multiple vocabularies
+4. Provide a common set of web scale identifiers to help create equivalency between multiple vocabularies
 
-## Cross-Linking / Interlinking
+## Interlinking of concepts
 
 - Legacy auto-categorization system: CIS
     - categorize programmes by textual description (brands, locations, people, subjects)
@@ -38,4 +39,16 @@
 - need for a common set of web identifiers: DBpedia!
 - DBpedia becomes vocabulary to connect all BBC domains
     - DBpedia Label Lookup: Find most likely matches to a given term, calculate relevance with number of backlinks
-    - Context-based Disambiguation: 
+    - Context-based Disambiguation: Disambiguate possible matches by clustering them and finding according context in DBpedia
+- (Evaluation)
+
+## Interlinking of documents
+Identify main actors in a piece of content (_Muddy Boots_):
+- parse story body of BBC news URI and use NER system to extract main entities (just text, no semantic meaning or classification)
+- an algorithm matches these to possible DBpedia resources
+- every possible match of every term is ranked with contextual disambiguation -> this creates mapping of extracted terms to possible counterparts in DBpedia
+- identify resources that correspond to 'people' or 'companies' based on present predicates
+
+## Content Link Tool
+- annotation tool to manually edit metadata
+- high quality automated suggestions by Muddy Boots for existing terms or terms from DBpedia
