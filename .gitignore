@@ -204,6 +204,7 @@ TSWLatexianTemp*
 *.bak
 *.sav
 *.vscodeLog
+*Thumbs.db*
 
 # Texpad
 .texpadtmp
