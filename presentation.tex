@@ -29,7 +29,7 @@
 
 \title{Media Meets Semantic Web}
 \subtitle{How the BBC uses DBpedia and Linked Data to Make Connections}
-\date{\today}
+\date{11$^{th}$ June, 2017}
 \author{Andreas Müller}
 \institute{Technische Universität Berlin}
 % \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
@@ -43,22 +43,47 @@
   \tableofcontents[hideallsubsections]
 \end{frame}
 
-\section{Introduction}
+\section{Problem}
 
-\begin{frame}[fragile]{Metropolis}
+\begin{frame}[fragile]{Problem}
 
-  The \themename theme is a Beamer theme with minimal visual noise
-  inspired by the \href{https://github.com/hsrmbeamertheme/hsrmbeamertheme}{\textsc{hsrm} Beamer
-  Theme} by Benjamin Weiss.
+  Large amounts of BBC online content: \textsc{\textbf{text}}, \textsc{\textbf{audio}}, \textsc{\textbf{video}}
 
-  Enable the theme by loading
+  Domain specific microsites: \textsc{\textbf{food}}, \textsc{\textbf{gardening}}, \textsc{\textbf{sport}}, etc. ...
 
-  \begin{verbatim}    \documentclass{beamer}
-    \usetheme{metropolis}\end{verbatim}
+  \pause
+  \begin{figure}
+    \centering
+      \includegraphics[width=\textwidth]{img/bbc_domains_2009}
+    \caption{BBC microsites in June, 2009}
+  \end{figure}
 
-  Note, that you have to have Mozilla's \emph{Fira Sans} font and XeTeX
-  installed to enjoy this wonderful typography.
 \end{frame}
+
+\begin{frame}[fragile]{Problem}
+
+  Large amounts of BBC online content: \textsc{\textbf{text}}, \textsc{\textbf{audio}}, \textsc{\textbf{video}}
+
+  Domain specific microsites: \textsc{\textbf{food}}, \textsc{\textbf{gardening}}, \textsc{\textbf{sport}}, etc. ...
+
+  \begin{figure}
+    \centering
+      \includegraphics[width=\textwidth]{img/bbc_domains_2017}
+    \caption{BBC microsites in June, 2017}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]{Problem}
+
+  Not possible to...
+  \begin{itemize}
+    \item Find \textbf{everything}, BBC has published to a given subject
+    \item Navigate between BBC domains following a \textbf{semantic thread}
+  \end{itemize}
+
+\end{frame}
+
 \begin{frame}[fragile]{Sections}
   Sections group slides of the same topic
 
