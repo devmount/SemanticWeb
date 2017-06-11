@@ -140,9 +140,25 @@
 
 \begin{frame}[fragile]{Interlinking of concepts — DBpedia}
 
-  Common Vocabulary: {\textbf{DBpedia}}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.5\textwidth}
+      Common Vocabulary: {\textbf{DBpedia}}
+      \bigskip
+      \begin{alertblock}{DBpedia Label Lookup}
+        Find most likely matches to a given term, calculate relevance with number of backlinks
+      \end{alertblock}
 
-  % TODO: image
+      \begin{alertblock}{Context-based Disambiguation}
+        Disambiguate possible matches by clustering them and finding according context in DBpedia
+      \end{alertblock}
+    \column{0.5\textwidth}
+      \begin{figure}
+        \centering
+          \includegraphics[width=\textwidth]{img/dbpedia.png}
+        \caption{Linking BBC Domains}
+      \end{figure}
+
+  \end{columns}
 
 \end{frame}
 
@@ -157,7 +173,7 @@
   \begin{figure}
     \centering
       \includegraphics[width=.75\textwidth]{img/muddy_boots.png}
-    \caption{BBC microsites in June, 2017}
+    \caption{How Muddy Boots works}
   \end{figure}
 
 \end{frame}
