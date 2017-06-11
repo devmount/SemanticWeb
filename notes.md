@@ -1,9 +1,11 @@
 # Media Meets Semantic Web
 
+- paper from 2009
+
 ## Definitions
 
 - Semantic Web:
-- BBC:
+- BBC: British Broadcasting Corporation
 - Linked Data:
 - DBpedia:
 - MusicBrainz:
@@ -11,11 +13,12 @@
 
 ## Problem
 
+- British Broadcasting Corporation (BBC) = British public service broadcaster in London
 - Large amounts of online content: text, audio, video
 - Historically separated into domain specific microsites (food, gardening, sport, etc) _[screenshot]_
 - Not possible to...
     - Find everything, BBC has published to a given subject
-    - navigate between BBC domains following a semantic thread
+    - navigate between BBC domains following a semantic thread (e.g a page about a musician !=> a page with all the programmes that have played that artist)
 
 ## Objectives
 
