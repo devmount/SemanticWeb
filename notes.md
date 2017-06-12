@@ -15,7 +15,7 @@
 
 - British Broadcasting Corporation (BBC) = British public service broadcaster in London
 - Large amounts of online content: text, audio, video
-- Historically separated into domain specific microsites (food, gardening, sport, etc) _[screenshot]_
+- Historically separated into domain specific microsites (food, gardening, sport, etc)
 - Not possible to...
     - Find everything, BBC has published to a given subject
     - navigate between BBC domains following a semantic thread (e.g a page about a musician !=> a page with all the programmes that have played that artist)
@@ -34,15 +34,16 @@
 
 - Legacy auto-categorization system: CIS
     - categorize programmes by textual description (brands, locations, people, subjects)
+    - difficult to cover every single entity that might be of interest
+    - no relations between terms are available (i.e. Beijing and the Beijing Olympics)
+    - only internal identifiers, no linking to non-BBC data
     - can be used to interlink between different domains while developing them independently
     - -> if there are mappings between the various vocabularies
-    - difficult to cover every single entity that might be of interest
-    - no relations between terms are available
-    - only internal identifiers, no linking to non-BBC data
 - need for a common set of web identifiers: DBpedia!
 - DBpedia becomes vocabulary to connect all BBC domains
     - DBpedia Label Lookup: Find most likely matches to a given term, calculate relevance with number of backlinks
     - Context-based Disambiguation: Disambiguate possible matches by clustering them and finding according context in DBpedia
+    - i.e. term 'apple' itself is simply a fruit, but in context of 'microsoft', 'google' it becomes 'Apple Inc,'
 - (Evaluation)
 
 ## Interlinking of documents
