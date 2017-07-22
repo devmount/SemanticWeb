@@ -17,7 +17,7 @@
 %
 \mainmatter              % start of the contributions
 %
-\title{Media Meets Semantic Web \newline How the BBC uses DBpedia and Linked Data \newline to Make Connections}
+\title{Media Meets Semantic Web:\newline Interlinking of BBC microsites\newline with DBpedia and Linked Data technologies}
 %
 \titlerunning{Media Meets Semantic Web}  % abbreviated title (for running head), also used for the TOC unless \toctitle is used
 %
@@ -68,7 +68,7 @@ The next section will give a short overview of the existing legacy systems of th
 
 \section{Background: Legacy Systems}
 
-One of the systems, the BBC was already using to automate content relations, was a legacy auto-categorization system called \textit{CIS}. With this system it was possible, to categorize programmes by their textual description, that contained meta data like brands, locations, people and subjects. Despite being used for the programmes domain only, it was not possible to cover every single entity that might have been of interest with CIS. This system also held no information about relations between different terms; i.e. the terms "Bejing" and "Bejing Olympics" obviously are related by location, but in the CIS system these were just two independet terms. Additionally the system only relied on internal identifiers, so linking to non-BBC data was not possible either.
+One of the systems, the BBC was already using to automate content relations, was a legacy auto-categorization system called \textit{CIS}. With this system it was possible, to categorize programmes by their textual description, that contained meta data like brands, locations, people and subjects. Despite being used for the programmes domain only, it was not possible to cover every single entity that might have been of interest with CIS. This system also held no information about relations between different terms; i.e. the terms "Bejing" and "Bejing Olympics" obviously are related by location, but in the CIS system these were seen as just two independet terms. Additionally the system only relied on internal identifiers, so linking to non-BBC data was not possible either.
 
 G.Kobilarov et al. pointed out, that CIS could only be used to interlink between different domains if there were mappings between the various vocabularies of each domain. In this case, it would be possible to further developing them independently \cite{mmsw}.
 
@@ -83,7 +83,7 @@ To solve the problem of the need for a common set of web identifiers for all dom
   \label{fig:dbpedia}
 \end{figure}
 
-To interlink all domains (as to be seen in figure \ref{fig:dbpedia}), DBpedia serves as a common vocabulary. This works in two steps. At first, a DBpedia label loopup is performed for a given CIS term. Therefore the most likely matches to a given term and possible DBpedia resources are found and ranked by their relevance\footnote{The relevance here is calculated by the number of backlinks.}. After that, the best match is found by context-based disambiguation. All relevent matches are disambiguated by clustering them and finding an according context in DBpedia. The term "apple" i.e. is simply a fruit for itself, but in the context of "Microsoft" and "Google" it becomes "Apple Inc.".
+To interlink all domains (as to be seen in figure \ref{fig:dbpedia}), DBpedia serves as a common vocabulary. This works in two steps. At first, a DBpedia label lookup is performed for a given CIS term. Therefore the most likely matches to a given term and possible DBpedia resources are found and ranked by their relevance\footnote{The relevance here is calculated by the number of backlinks.}. After that, the best match is found by context-based disambiguation. All relevent matches are disambiguated by clustering them and finding an according context in DBpedia. The term "apple" i.e. is simply a fruit for itself, but in the context of "Microsoft" and "Google" it becomes "Apple Inc.".
 
 With the use of the same vocabulary, the interlinking of text documents (i.e. news or documentation articles) became possible. Therefore the text body of a BBC document URI was parsed to extract the main entities using \textit{Named-entity Recognition} (NER)\footnote{Named-entity Recognition is a part of information extraction, that finds and categorizes real-world objects in text.}. These main entities then are matched by an algorithm to possible DBpedia resources and ranked by contextual disambiguation, like described in the previous paragraph. This creates a mapping of extracted terms to possible counterparts in DBpedia. Finally the DBpedia resources are filtered in a way that only resources that correspond to "people" or "companies" are kept. This is achieved by the already existing predicates of the terms provided by CIS. This process of interlinking documents is realized by a system called \textit{Muddy Boots} and is presented in figure \ref{fig:muddy}.
 
@@ -112,16 +112,24 @@ According to G.Kobilarov et al. \cite{mmsw} the precision of the interlinking re
 \label{tab:evaluation}
 \end{table}
 
-The reason for the low percantage values (only up to 30\%) in the "Linked" column for brands, locations and names is, that there is simply no own Wikipedia article for many terms in these categories.
-
+The reason for the low percentage values (only up to 30\%) in the "Linked" column for brands, locations and names is, that there is simply no particular Wikipedia article for many terms in these categories.
 
 \section{Related Work}
 
-...
+Making current data accessible by linking information is not the only issue the BBC is facing. One problem i.e. is the accessability of a media archive. Raimond et al. proposed "a system to process the existing audio and text and automatically annotate programmes within the archive with Linked Data web identifiers" \cite{raimond} in 2014. And as automated data always fails for a small portion of generated content, they even developed a crowdsourcing mechanism to create the possibility for users to take part in correction or addition.
+
+Furthermore the BBC has evolved a rich collection of learning resources. Mikroyannidi et al. proposed a system "that employs semantic web technologies to organize the available learning resources" in 2016 \cite{education}. They describe how such a data model and architecture could look like.
 
 \section{Future Work \& conclusions}
 
 G.Kobilarov et al. \cite{mmsw} showed, that it is possible to develop a smart interlinking to internal and external resources of previously seperated content domains to improve the user experience. Users now can access information from different domains much easier following more meaningful navigation paths.
+
+It is conceivable, that an approach based on \textit{Natural Language Processing} and \textit{Neural Networks} could achieve an even higher score in precision and recall when linking to interal or external resources, based on the fact that the BBC has more than enough data to train language models that represent their articles.
+
+The improvements to systems like the BBC website described in the previous sections show, that the process of improving user experience and at the same time handling the legacy systems will always be a current issue.
+
+
+\vspace{20mm}
 
 %
 % ---- Bibliography ----
@@ -149,7 +157,12 @@ G.Kobilarov et al. \cite{mmsw} showed, that it is possible to develop a smart in
   J.Lehmann, R.Isele, M.Jakob, A.Jentzsch, D.Kontokostas, P.N.Mendes, S.Hellmann, M.Morsey, P.van Kleef, S.Auer, C.Bizer:
   \textit{DBpedia – A large-scale, multilingual knowledge base extracted from Wikipedia}.
   10.3233/SW-140134
-  Semantic Web, vol. 6, no. 2, pp. 167-195, 2015
+  Semantic Web, vol. 6, no. 2, pp. 167--195, 2015
+%
+\bibitem {education}
+  Eleni Mikroyannidi, Dong Liu, Robert Lee:
+  \textit{Use of Semantic Web Technologies in the Architecture of the BBC Education Online Pages}.
+  Open Data for Education: Linked, Shared, and Reusable Data for Teaching and Learning, pp. 67--85, 2016
 %
 \end{thebibliography}
 
