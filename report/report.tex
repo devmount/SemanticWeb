@@ -68,13 +68,20 @@ The next section will give a short overview of the existing legacy systems of th
 
 \section{Background}
 %
+One of the systems, the BBC was already using to automate content relations, was a legacy auto-categorization system called \textit{CIS}. With this system it was possible, to categorize programmes by their textual description, that contained meta data like brands, locations, people and subjects. Despite being used for the programmes domain only, it was not possible to cover every single entity that might have been of interest with CIS. This system also held no information about relations between different terms; i.e. the terms "Bejing" and "Bejing Olympics" obviously are related by location, but in the CIS system these were just two independet terms. Additionally the system only relied on internal identifiers, so linking to non-BBC data was not possible either.
+
+G.Kobilarov et al. pointed out, that CIS could only be used to interlink between different domains if there were mappings between the various vocabularies of each domain. In this case, it would be possible to further developing them independently \cite{mmsw}.
+
+\section{Solution}
+%
+To solve the problem of the need for a common set of web identifiers for all domains, a well-known, crowd-sourced extraction framework was chosen: \textit{DBpedia}\footnote{The first public DBpedia datasets were released 2007. Its purpose is to extract structured content from the data of Wikipedia using Semantic Web and Linked Data technologies \cite{dbpedia}.}.
+
 \begin{figure}[!h]
-  \includegraphics[width=\textwidth]{images/dbpedia_dark}
+  \centering
+  \includegraphics[width=.75\textwidth]{images/dbpedia_dark}
   \caption{BBC microsites connected by DBpedia}
   \label{fig:dbpedia}
 \end{figure}
-%
-\section{Solution}
 %
 \begin{figure}[!h]
   \includegraphics[width=\textwidth]{images/muddy_boots_dark}
@@ -144,7 +151,19 @@ The next section will give a short overview of the existing legacy systems of th
   The Sunday Times:
   \textit{THE BBC is launching an on-line service}. 17 April 1994.
   Quoted in Connor, Alan (25 December 2007). "The WWW Info-Rainforest". \textit{BBC Internet Blog}. BBC.
-
+%
+\bibitem {raimond}
+  Yves Raimond, Tristan Ferne, Michael Smethurst, Gareth Adams:
+  \textit{The BBC World Service Archive prototype}.
+  Web Semantics: Science, Services and Agents on the World Wide Web
+  Semantic Web Challenge 2013:2-9, 2014
+%
+\bibitem {dbpedia}
+  J.Lehmann, R.Isele, M.Jakob, A.Jentzsch, D.Kontokostas, P.N.Mendes, S.Hellmann, M.Morsey, P.van Kleef, S.Auer, C.Bizer:
+  \textit{DBpedia – A large-scale, multilingual knowledge base extracted from Wikipedia}.
+  10.3233/SW-140134
+  Semantic Web, vol. 6, no. 2, pp. 167-195, 2015
+%
 \end{thebibliography}
 
 \end{document}
