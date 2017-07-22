@@ -66,13 +66,13 @@ To make the BBC website more coherent and more useful, G.Kobilarov et al. propos
 
 The next section will give a short overview of the existing legacy systems of the BBC website.
 
-\section{Background}
+\section{Background: Legacy Systems}
 %
 One of the systems, the BBC was already using to automate content relations, was a legacy auto-categorization system called \textit{CIS}. With this system it was possible, to categorize programmes by their textual description, that contained meta data like brands, locations, people and subjects. Despite being used for the programmes domain only, it was not possible to cover every single entity that might have been of interest with CIS. This system also held no information about relations between different terms; i.e. the terms "Bejing" and "Bejing Olympics" obviously are related by location, but in the CIS system these were just two independet terms. Additionally the system only relied on internal identifiers, so linking to non-BBC data was not possible either.
 
 G.Kobilarov et al. pointed out, that CIS could only be used to interlink between different domains if there were mappings between the various vocabularies of each domain. In this case, it would be possible to further developing them independently \cite{mmsw}.
 
-\section{Solution}
+\section{Solution: Integration of DBpedia}
 %
 To solve the problem of the need for a common set of web identifiers for all domains, a well-known, crowd-sourced extraction framework was chosen: \textit{DBpedia}\footnote{The first public DBpedia datasets were released 2007. Its purpose is to extract structured content from the data of Wikipedia using Semantic Web and Linked Data technologies \cite{dbpedia}.}.
 
@@ -82,16 +82,20 @@ To solve the problem of the need for a common set of web identifiers for all dom
   \caption{BBC microsites connected by DBpedia}
   \label{fig:dbpedia}
 \end{figure}
-%
+
+To interlink all domains (as to be seen in figure \ref{fig:dbpedia}), DBpedia serves as a common vocabulary. This works in two steps. At first, a DBpedia label loopup is performed for a given CIS term. Therefore the most likely matches to a given term and possible DBpedia resources are found and ranked by their relevance\footnote{The relevance here is calculated by the number of backlinks.}. After that, the best match is found by context-based disambiguation. All relevent matches are disambiguated by clustering them and finding an according context in DBpedia. The term "apple" i.e. is simply a fruit for itself, but in the context of "Microsoft" and "Google" it becomes "Apple Inc.".
+
+With the use of the same vocabulary, the interlinking of text documents (i.e. news or documentation articles) became possible. Therefore the text body of a BBC document URI was parsed to extract the main entities using \textit{Named Entity Recognition} (NER)\footnote{TODO}. These main entities then are matched by an algorithm to possible DBpedia resources and ranked by contextual disambiguation, like described in the previous paragraph. This creates a mapping of extracted terms to possible counterparts in DBpedia. Finally the DBpedia resources are filtered in a way that only resources that correspond to "people" or "companies" are kept. This is achieved by the already existing predicates of the terms provided by CIS. This process of interlinking documents is realized by a system called \textit{Muddy Boots} and is presented in figure \ref{fig:muddy}.
+
 \begin{figure}[!h]
   \includegraphics[width=\textwidth]{images/muddy_boots_dark}
-  \caption{Muddy Boots}
+  \caption{Muddy Boots: Identify main actors in a piece of text content}
   \label{fig:muddy}
 \end{figure}
 %
 \section{Evaluation}
 %
-...
+According to G.Kobilarov et al. \cite{mmsw} ...
 %
 \section{Related Work}
 %
