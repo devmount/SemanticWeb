@@ -39,9 +39,9 @@
 This paper describes, how the BBC managed to better interlink different BBC domains by introducing DBpedia as a common vocabulary for every domain. Given the existing legacy systems, the BBC was already using, it is shown, how the new Semantic Web technology was integrated and used, to interlink documents and providing a better usability and user experience, allowing the user to browse different BBC domains by following a semantic thread and getting cross-domain information.
 \keywords{linked data, semantic web, bbc, dbpedia}
 \end{abstract}
-%
+
 \section{Introduction}
-%
+
 The British Broadcasting Corporation (BBC) is the oldest and still one of the largest Broadcasting Companies in the world. Given the fact, that the BBC is producing online content since 1994 \cite{st1994}, they have a huge amount of online media content today in text, audio and video format. To make the data accessible, it was categorized and organized in different domains, i.e. news, sport, weather etc. Figure \ref{fig:domains2009} and \ref{fig:domains2017} present these domains the way they were displayed on the BBC website in the years 2009 and 2017. Each domain became a separate microsite with its own content, vocabulary and datasets.
 \begin{figure}[!ht]
   \includegraphics[width=\textwidth]{images/bbc_domains_2009}
@@ -67,13 +67,13 @@ To make the BBC website more coherent and more useful, G.Kobilarov et al. propos
 The next section will give a short overview of the existing legacy systems of the BBC website.
 
 \section{Background: Legacy Systems}
-%
+
 One of the systems, the BBC was already using to automate content relations, was a legacy auto-categorization system called \textit{CIS}. With this system it was possible, to categorize programmes by their textual description, that contained meta data like brands, locations, people and subjects. Despite being used for the programmes domain only, it was not possible to cover every single entity that might have been of interest with CIS. This system also held no information about relations between different terms; i.e. the terms "Bejing" and "Bejing Olympics" obviously are related by location, but in the CIS system these were just two independet terms. Additionally the system only relied on internal identifiers, so linking to non-BBC data was not possible either.
 
 G.Kobilarov et al. pointed out, that CIS could only be used to interlink between different domains if there were mappings between the various vocabularies of each domain. In this case, it would be possible to further developing them independently \cite{mmsw}.
 
 \section{Solution: Integration of DBpedia}
-%
+
 To solve the problem of the need for a common set of web identifiers for all domains, a well-known, crowd-sourced extraction framework was chosen: \textit{DBpedia}\footnote{The first public DBpedia datasets were released 2007. Its purpose is to extract structured content from the data of Wikipedia using Semantic Web and Linked Data technologies \cite{dbpedia}.}.
 
 \begin{figure}[!h]
@@ -85,60 +85,43 @@ To solve the problem of the need for a common set of web identifiers for all dom
 
 To interlink all domains (as to be seen in figure \ref{fig:dbpedia}), DBpedia serves as a common vocabulary. This works in two steps. At first, a DBpedia label loopup is performed for a given CIS term. Therefore the most likely matches to a given term and possible DBpedia resources are found and ranked by their relevance\footnote{The relevance here is calculated by the number of backlinks.}. After that, the best match is found by context-based disambiguation. All relevent matches are disambiguated by clustering them and finding an according context in DBpedia. The term "apple" i.e. is simply a fruit for itself, but in the context of "Microsoft" and "Google" it becomes "Apple Inc.".
 
-With the use of the same vocabulary, the interlinking of text documents (i.e. news or documentation articles) became possible. Therefore the text body of a BBC document URI was parsed to extract the main entities using \textit{Named Entity Recognition} (NER)\footnote{TODO}. These main entities then are matched by an algorithm to possible DBpedia resources and ranked by contextual disambiguation, like described in the previous paragraph. This creates a mapping of extracted terms to possible counterparts in DBpedia. Finally the DBpedia resources are filtered in a way that only resources that correspond to "people" or "companies" are kept. This is achieved by the already existing predicates of the terms provided by CIS. This process of interlinking documents is realized by a system called \textit{Muddy Boots} and is presented in figure \ref{fig:muddy}.
+With the use of the same vocabulary, the interlinking of text documents (i.e. news or documentation articles) became possible. Therefore the text body of a BBC document URI was parsed to extract the main entities using \textit{Named-entity Recognition} (NER)\footnote{Named-entity Recognition is a part of information extraction, that finds and categorizes real-world objects in text.}. These main entities then are matched by an algorithm to possible DBpedia resources and ranked by contextual disambiguation, like described in the previous paragraph. This creates a mapping of extracted terms to possible counterparts in DBpedia. Finally the DBpedia resources are filtered in a way that only resources that correspond to "people" or "companies" are kept. This is achieved by the already existing predicates of the terms provided by CIS. This process of interlinking documents is realized by a system called \textit{Muddy Boots} and is presented in figure \ref{fig:muddy}.
 
 \begin{figure}[!h]
   \includegraphics[width=\textwidth]{images/muddy_boots_dark}
   \caption{Muddy Boots: Identify main actors in a piece of text content}
   \label{fig:muddy}
 \end{figure}
-%
+
 \section{Evaluation}
-%
-According to G.Kobilarov et al. \cite{mmsw} ...
-%
+
+According to G.Kobilarov et al. \cite{mmsw} the precision of the interlinking results previously described are very good, with a precision of 86\% for Brands and more than 90\% for locations, names and subjects (see table \ref{tab:evaluation}).
+\begin{table}
+\centering
+\begin{tabular}{lcccc}
+  \hline
+  \textbf{ } & \textbf{Total} & \textbf{Linked} & \textbf{Precision} & \textbf{Recall} \\
+  \hline
+  Brand & 6,630 & 1,267 (19\%) & 86\% & 41\% \\
+  Location & 55,943 & 11,316 (20\%) & 99\% & 77\% \\
+  Name & 73,442 & 22,341 (30\%) & 92\% & 67\% \\
+  Subject & 11,231 & 6,822 (61\%) & 92\% & 75\% \\
+  \hline
+\end{tabular}
+\caption{CIS / DBpedia Interlinking Results of G.Kobilarov et al. \cite{mmsw}}
+\label{tab:evaluation}
+\end{table}
+
+The reason for the low percantage values (only up to 30\%) in the "Linked" column for brands, locations and names is, that there is simply no own Wikipedia article for many terms in these categories.
+
+
 \section{Related Work}
-%
+
 ...
-%
+
 \section{Future Work \& conclusions}
-%
-...
 
-%
-% \subsection{Autonomous Systems}
-%
-% \begin{figure}
-% \vspace{2.5cm}
-% \caption{This is the caption of the figure displaying a white eagle and
-% a white horse on a snow field}
-% \end{figure}
-%
-% \paragraph{Notes and Comments.}
-% The results in this section are a
-% refined version of \cite{clar:eke};
-% the minimality result of Proposition
-% 14 was the first of its kind.
-
-% \begin{table}
-% \caption{This is the example table taken out of {\it The
-% \TeX{}book,} p.\,246}
-% \begin{center}
-% \begin{tabular}{r@{\quad}rl}
-% \hline
-% \multicolumn{1}{l}{\rule{0pt}{12pt}
-%                    Year}&\multicolumn{2}{l}{World population}\\[2pt]
-% \hline\rule{0pt}{12pt}
-% 8000 B.C.  &     5,000,000& \\
-%   50 A.D.  &   200,000,000& \\
-% 1650 A.D.  &   500,000,000& \\
-% 1945 A.D.  & 2,300,000,000& \\
-% 1980 A.D.  & 4,400,000,000& \\[2pt]
-% \hline
-% \end{tabular}
-% \end{center}
-% \end{table}
-%
+G.Kobilarov et al. \cite{mmsw} showed, that it is possible to develop a smart interlinking to internal and external resources of previously seperated content domains to improve the user experience. Users now can access information from different domains much easier following more meaningful navigation paths.
 
 %
 % ---- Bibliography ----
